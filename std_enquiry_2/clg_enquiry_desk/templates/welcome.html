@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        color: #228b22;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+    h2{
+        color: rgb(12, 103, 73);
+    }
+    button{
+        border-radius: 15px;
+        height: 35px;
+        border: none;
+        width: 190px;
+        color: rgb(19, 59, 93);
+        background-color:#89cbbf;
+        transition: 0.4s;
+        margin-right: 20px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: background-color 0.3s;
+    }
+    button:hover{
+        box-shadow: 0 0 50px 25px #13c8a7;
+        background-color: aquamarine;
+    }
+    body{
+        background:linear-gradient(to right,rgb(185, 234, 185) 20%,rgb(255, 253, 253) 100%)
+    }
+</style>
+<body>
+    <form method="post" action="{% url 'enq' %}">
+        {% csrf_token %}
+    <center>
+    <h1>welcome to our college!</h1>
+    <br><br>
+    <h2>"Discover your future at our institution, a place where dreams take flight"</h2>
+    <h2>"Join a community of passionate learners and shape your tommarow with us"
+    </h2><br><br><br>
+    <button type="submit"><b>Enquiry Desk<b></button>
+        <button type="button"><b>About college<b></button><button type="button"><b>About courses<b></button>
+</center>
+</form>
+</html>

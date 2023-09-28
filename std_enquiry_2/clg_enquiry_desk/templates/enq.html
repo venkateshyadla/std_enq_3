@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Enquiry desk</title>
+</head>
+<style>
+    body{
+        background: linear-gradient(to right,rgb(185, 234, 185) 20%,rgb(175, 231, 235) 100%);
+    }
+</style>
+<body>
+    {% block content %}
+    
+    <div class="container mt-5">
+        <h2>Registration Form</h2>
+        <form action="{% url 'fee_fix_form' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="enquiryDate">Full name:</label>
+                <input type="text" class="form-control" id="std_name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="enquiryDate">Father name:</label>
+                <input type="text" class="form-control" name="father_name" placeholder="Father name" required>
+            </div>
+            <div class="form-group">
+                <label for="enquiryDate">Date of Bith:</label>
+                <input type="date" class="form-control" name="dob" placeholder="Date Of Birth" required>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email adress" required>
+            </div>
+            <div class="form-group">
+                <label for="enquiryDate">Enquiry Date:</label>
+                <input type="date" class="form-control" id="enquiryDate" name="enquiry_date" required>
+            </div>
+            <div class="form-group"></div>
+            
+            <div class="form-group">
+                <label for="course">Select Course:</label>
+                <select class="form-control" id="course" name="course">
+                    <option name="opt1">select course</option>
+                    {% for course in courses %}
+                        <option name="opt1">{{course}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="branch">Select Branch:</label>
+                <select class="form-control" id="branch" name="branch">
+                    <option value="">Select Branch</option>
+                    {% for branch in branches %}              
+                    <option name="opt2">{{branch}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!--<div class="form-group">
+                <label for="enquiryDate">course:</label>
+                <input type="text" class="form-control" id="enquiryDate" name="course" required>
+            </div>
+            <div class="form-group">
+                <label for="enquiryDate">branch:</label>
+                <input type="text" class="form-control" id="enquiryDate" name="branch" required>
+            </div>-->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock content %}
+</body>
+</html>

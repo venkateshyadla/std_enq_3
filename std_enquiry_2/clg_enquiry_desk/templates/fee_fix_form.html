@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+    p{
+        font-style: oblique;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+    h3{
+        background-color: rgb(109, 208, 120);
+    }
+    h1{
+        font-family:'Times New Roman', Times, serif;
+        text-align: center;
+    }
+    k{
+        font-family:fantasy;
+    }
+
+    .check{
+        height: 20px;
+        width: 20px;
+    }
+    body{
+        background: linear-gradient(to right,rgb(185, 234, 185) 10%,rgb(165, 226, 246) 100%);
+    }
+    table{
+        margin-left: 10px;
+        border-collapse: separate;
+        border-spacing: 30px 10px;
+    }
+    tr{
+        left: 30px;
+    }
+    .warn{
+        color: red;
+    }
+</style>
+<body><form action="/success/" method='POST'>
+    {% block content %}
+    {% csrf_token %}
+    <h1>Fee fixation form</h1><br>
+    <p>
+        <b>Hello student,</b><br>
+
+We are delighted that you've chosen to pursue the <b>{{course}}</b> with us. As part of the enrollment process, we need to determine the fee for this course. Please verify the following details to assist us in the fee fixation process:<br>
+<br>
+<br>
+1. Your Full Name           : <b>{{s_name}}</b><br>
+2. father name              :<b>{{father_name}}</b><br>
+3. Course Selected          : <b>{{course}}</b><br>
+4. Duration of the Course   : <b>{{duration}} years</b><br>
+5. Course specialization    :<b>{{branch}}</b><br>
+6. Eligible for cholarships :<b>{{discounts}}</b><br>
+<br>
+Once we receive this information, our team will calculate the course fee and communicate it to you promptly. If you have any questions or need further assistance, please do not hesitate to reach out to our admissions department.
+
+Thank you for choosing <b>{{course}}</b>, and we look forward to assisting you in your educational journey.<br>
+
+Sincerely
+<b>{{inst_name}}</b>.
+    </p>
+    <table>
+            <tr><td><k>Tution fee</k></td><td><k>{{fee}}</k></td></tr>
+            <tr><td><k>Accrediation fee</k></td><td><k>12000</k></td></tr>
+            <tr><td><k>General Development</k></td><td><k>1300</k></td></tr>
+            <tr><td><k>Music & Other Fee</k></td><td><k>500</k></td></tr>
+            <tr><td><k>Sports fee</k></td><td><k>1000</k></td></tr>
+            <tr><td><k>Exam Fees</k></td><td><k>5000</k></td></tr>
+            
+    </table>
+<p><b>Total fee for the entire course is: </b><h3>Rs: {{total_fee}}.00 /-</h3></p>
+<br><br>
+<p><b>Your Student ID number is: </b><h3>STDBBCTV9-087{{std_id}}</h3></p>
+
+<label style="color: red; font-size: large;"><b>i agree the above statements</b></label>
+<input type="checkbox" id="check" name="accepted"><br>
+<button class="btn btn-primary">Proceed Payment</button>
+
+</form>
+</body>
+{% if alert %}
+<script>
+    alert("for proceed you need to agree the terms and conditions..!");
+</script>
+{% endif %}
+{% endblock content %}
+
+</html>
